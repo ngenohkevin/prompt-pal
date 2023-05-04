@@ -8,11 +8,16 @@ import (
 
 var rootCmd = &cobra.Command{
 	Use:   "prompt-pal",
-	Short: "A CLI for OpenAI's GPT-3 language model",
-	Long: `PromptPal is a powerful tool for handling user prompts in a simple and intuitive way. 
-	Its name reflects its core functionality and emphasizes its ability to provide personalized and helpful responses.`,
+	Short: "A command-line tool for integrating OpenAI's ChatGPT API",
+	Long: `PromptPal is a command-line tool that allows you to interact with OpenAI's 
+ChatGPT API from your terminal. With PromptPal, you can ask technical questions 
+and get personalized feedbacks instantly.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("Welcome to PromptPal! Use the --help flag to see the available commands.")
+		fmt.Println("Welcome to PromptPal. Use 'prompt-pal help' to see available commands.")
+		err := cmd.Help()
+		if err != nil {
+			return
+		}
 	},
 }
 
