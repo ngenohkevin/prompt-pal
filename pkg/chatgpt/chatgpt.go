@@ -32,12 +32,12 @@ func GetChatResponse(prompt string) (*ChatGPT, error) {
 // GenerateResponse generates a response from the OpenAI GPT chatbot given a prompt.
 func (cg *ChatGPT) GenerateResponse(ctx context.Context, prompt string, length int, temperature float64) (string, error) {
 	completionReq := &openai.CompletionRequest{
-		Model:       "text-davinci-002",
+		Model:       "gpt-3.5-turbo-0613",
 		Prompt:      prompt,
 		MaxTokens:   length,
 		Temperature: float32(temperature),
 	}
-
+	//completionReq := &openai.CompletionRequest{
 	resp, err := cg.client.CreateCompletion(ctx, *completionReq)
 	if err != nil {
 		return "", fmt.Errorf("failed to generate repsonse: %v", err)
